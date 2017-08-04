@@ -12,25 +12,32 @@ function resize() {
 }
 
 export default function Transformer(props) {
+  let editorProps = {
+    highlight: false,
+    value: props.transformCode,
+    onContentChange: props.onContentChange,
+    enableFormatting: props.enableFormatting,
+  };
+  if (props.transformer.mode) {
+    editorProps.mode = props.transformer.mode;
+  }
   const plainEditor = React.createElement(
     props.transformer.id === 'jscodeshift' ? JSCodeshiftEditor : Editor,
-    {
-      highlight: false,
-      value: props.transformCode,
-      onContentChange: props.onContentChange,
-      enableFormatting: props.enableFormatting,
-    }
+    editorProps
   );
 
-  const formattingEditor = (<div>
-    <PrettierButton toggleFormatting={props.toggleFormatting} enableFormatting={props.enableFormatting}/>
-    {plainEditor}
-  </div>)
+  const formattingEditor = (
+    <div>
+      <PrettierButton
+        toggleFormatting={props.toggleFormatting}
+        enableFormatting={props.enableFormatting}
+      />
+      {plainEditor}
+    </div>
+  );
 
   return (
-    <SplitPane
-      className="splitpane"
-      onResize={resize}>
+    <SplitPane className="splitpane" onResize={resize}>
       {formattingEditor}
       <TransformOutput
         transformer={props.transformer}

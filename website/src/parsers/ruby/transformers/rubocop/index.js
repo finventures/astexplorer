@@ -7,6 +7,7 @@ export default {
   displayName: name,
   version: '0.0.1',
   homepage: 'www.google.com',
+  mode: 'ruby',
 
   defaultParserID: 'mugwort',
 
