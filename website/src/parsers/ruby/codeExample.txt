@@ -1,11 +1,3 @@
-tips = [
-    "Click on any AST node with a '+' to expand it",
-    "Hovering over a node highlights the corresponding part in the source code",
-    "Shift click on an AST node expands the whole substree"
-]
-
-def print_tips
-  tips.each do |tip|
-    puts tip
-  end
+private def hello
+  puts "hello"
 end

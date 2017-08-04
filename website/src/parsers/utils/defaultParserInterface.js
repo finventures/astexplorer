@@ -24,7 +24,7 @@ export default {
         value: node[prop],
         key: prop,
         computed: false,
-      }
+      };
     }
   },
 };

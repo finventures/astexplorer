@@ -1,10 +1,8 @@
 import compileModule from '../../utils/compileModule';
-import {parseNoPatch} from 'babel-eslint';
+import { parseNoPatch } from 'babel-eslint';
 
 export function formatResults(results) {
-  return results.length === 0
-    ? 'Lint rule not fired.'
-    : results.map(formatResult).join('').trim();
+  return results.length === 0 ? 'Lint rule not fired.' : results.map(formatResult).join('').trim();
 }
 
 export function formatResult(result) {
@@ -30,11 +28,11 @@ export function runRule(code, eslint, sourceCode) {
     sourceType: 'module',
   });
   const results = eslint.verify(new sourceCode(code, ast), {
-    env: {es6: true},
+    env: { es6: true },
     parserOptions: {
       ecmaVersion: 8,
       sourceType: 'module',
-      ecmaFeatures: {experimentalObjectRestSpread: true},
+      ecmaFeatures: { experimentalObjectRestSpread: true },
     },
     rules: {
       astExplorerRule: 2,
