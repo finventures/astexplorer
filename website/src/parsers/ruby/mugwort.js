@@ -13,7 +13,8 @@ export default {
     require(['mugwort'], callback);
   },
 
-  parse(Engine, code, options) {
+  parse(module, code, options) {
+    const Engine = module.default;
     const parser = new Engine({ ...options });
     return parser.parseCode(code, '');
   },
